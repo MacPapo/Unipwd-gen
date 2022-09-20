@@ -15,20 +15,26 @@ class PwdGen
     bootstrap_settings
     @settings = load_settings[0][:settings]
     bootstrap_csv(@settings[:db_path], @settings[:headers])
-    @new_pwd = pwd_gen
+    @new_pwd = pwd_gen until pwd_check @new_pwd
     @pwds = load_pwds(@settings[:db_path])
     @last_pwd = @pwds[-1] unless @pwds.empty?
   end
 
   def start_generator
+    clear_term
     case main_menu
     when 1
       write_csv(@new_pwd, @settings[:db_path])
       recap
     when 2
-      print "\nThe last password generated on #{last_pwd['Data']} at #{last_pwd['Ora']} is\n => #{last_pwd['Password']}"
+      date = last_pwd['Data']
+      hour = last_pwd['Ora']
+      pwd  = last_pwd['Password']
+      print "\nThe last password generated on #{date} at #{hour} is\n => #{pwd}"
     when 3
-      @pwds.each_with_index { |x, i| print "# PWD N.#{i} => #{x['Data']} at #{x['Ora']} #{x['Password']}\n" }
+      @pwds.each_with_index do |x, i|
+        print "# PWD N.#{i}: #{x['Data']} at #{x['Ora']} => #{x['Password']}\n"
+      end
     end
   end
 
@@ -36,9 +42,11 @@ class PwdGen
     @settings[:dictionary].split(//).sort_by { rand }.join[..@settings[:pwd_len]]
   end
 
-  # def pwd_check(pwd)
-  #   pwd.include?
-  # end
+  def pwd_check(pwd)
+    return false if pwd.nil?
+
+    pwd.match?(/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\W]).{8,}$/)
+  end
 
   def recap
     print "\nThe new generated password is\n=> #{@new_pwd}\n"
@@ -46,7 +54,6 @@ class PwdGen
   end
 
   def main_menu
-    clear_term
     selection = 0
     valid_choices = (1..3).to_a
     print "Hello, welcome to Unipd Password Generator!\n\nSelect an action:\n\n"

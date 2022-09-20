@@ -16,7 +16,9 @@ module CsvManager
   end
 
   def csv_pwd(pwd)
-    CSV.generate { |csv| csv << [Time.now.strftime('%H:%M'), Time.now.strftime('%d-%m-%Y'), pwd] }
+    hour = Time.now.strftime('%H:%M')
+    date = Time.now.strftime('%d-%m-%Y')
+    CSV.generate { |csv| csv << [hour, date, pwd] }
   end
 
   def load_pwds(file)
