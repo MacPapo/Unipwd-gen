@@ -58,3 +58,4 @@ build-iPhoneSimulator/
 # Project stuff
 .db_pwd.csv
 settings.yaml
+.DS_Store

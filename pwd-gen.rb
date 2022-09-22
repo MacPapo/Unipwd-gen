@@ -45,7 +45,7 @@ class PwdGen
   def pwd_check(pwd)
     return false if pwd.nil?
 
-    pwd.match?(/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\W]).{8,}$/)
+    pwd.match?(/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*\W).{10,}$/)
   end
 
   def recap

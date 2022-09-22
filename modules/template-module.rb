@@ -8,6 +8,6 @@ module TemplateModule
         dictionary: "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz?@()1234567890_-+<>,."
         db_path: ".db_pwd.csv"
         headers: "Ora,Data,Password"
-        pwd_len: 10
+        pwd_len: 12
   TEMPLATE
 end
