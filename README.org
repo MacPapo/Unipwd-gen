@@ -1,0 +1,16 @@
+#+TITLE: Uni Password Generator!
+#+AUTHOR: Jacopo Costantini
+
+Uni Password Manager helps you generate and rememder University site passwords!!
+
+* Fast
+
+Unipwd-gen is fast thanks to concise functions that guide you to generate or recover passwords
+
+* Simple
+
+Thanks to Ruby, Unipwd-gen is small and simple to understand, the code is opensource and can be modified!
+
+* Secure
+
+All passwords are stored inside a csv file hidden in your system, in the root of the Unipwd-gen dir.
