@@ -76,7 +76,7 @@ class PwdGen
   # (taken also from settings.yaml file) returning back the new
   # generated password mixed of len pwd_len!
   def pwd_gen
-    @settings[:dictionary].split(//).sort_by { rand }.join[..@settings[:pwd_len]]
+    @settings[:dictionary].split(//).sort_by { rand }.join[...@settings[:pwd_len]]
   end
 
   # pwd_check use a powerfull regex to scan the new generated pwd and check for
