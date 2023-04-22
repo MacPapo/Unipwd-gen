@@ -14,3 +14,10 @@ Thanks to Ruby, Unipwd-gen is small and simple to understand, the code is openso
 * Secure
 
 All passwords are stored inside a csv file hidden in your system, in the root of the Unipwd-gen dir.
+
+* How to use it
+
+Go in the project directory and run
+#+begin_src shell
+ruby pwd-gen.rb
+#+end_src
